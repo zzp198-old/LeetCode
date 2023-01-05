@@ -1,4 +1,4 @@
-package LeetCode
+package problems
 
 //	func countPairs(nums []int, low int, high int) (answer int) {
 //		for i := 0; i < len(nums); i++ {
