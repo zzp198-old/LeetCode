@@ -1,0 +1,30 @@
+package problems
+
+func maximalNetworkRank(n int, roads [][]int) int {
+	ans := 0
+	city_conns := make([][]int, n)
+	for i := 0; i < len(city_conns); i++ {
+		city_conns[i] = make([]int, n)
+	}
+	city_side := make([]int, n)
+	for _, road := range roads {
+		a, b := road[0], road[1]
+		city_conns[a][b], city_conns[b][a] = 1, 1
+		city_side[a]++
+		city_side[b]++
+	}
+	for i := 0; i < n; i++ {
+		for j := i + 1; j < n; j++ {
+			ans = max(ans, city_side[i]+city_side[j]-city_conns[i][j])
+		}
+	}
+	return ans
+}
+
+func max(a, b int) int {
+	if a > b {
+		return a
+	} else {
+		return b
+	}
+}
